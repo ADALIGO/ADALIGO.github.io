@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title description">
+  <title id="title">ADALIGO profile art placeholder</title>
+  <desc id="description">A ghost silhouette beneath the words From Zero to Infinity.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#090812"/>
+      <stop offset="1" stop-color="#291744"/>
+    </linearGradient>
+    <linearGradient id="ghost" x1="0" y1="0" x2="0.9" y2="1">
+      <stop stop-color="#e6dcff"/>
+      <stop offset="1" stop-color="#8f72cf"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+  <rect width="640" height="640" rx="72" fill="url(#background)"/>
+  <circle cx="320" cy="254" r="152" fill="#9c73ff" opacity=".17" filter="url(#glow)"/>
+  <path d="M194 318c0-80 56-144 126-144s126 64 126 144v120l-47-28-39 34-40-34-40 34-39-34-47 28V318z" fill="url(#ghost)" stroke="#f4edff" stroke-width="8" stroke-linejoin="round"/>
+  <ellipse cx="273" cy="314" rx="12" ry="19" fill="#171124"/>
+  <ellipse cx="367" cy="314" rx="12" ry="19" fill="#171124"/>
+  <path d="M298 361c14 13 30 13 44 0" fill="none" stroke="#51406f" stroke-linecap="round" stroke-width="7"/>
+  <text x="320" y="506" fill="#fff" font-family="Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="3" text-anchor="middle">ADALIGO</text>
+  <text x="320" y="546" fill="#c7b5ee" font-family="Arial, sans-serif" font-size="17" letter-spacing="2" text-anchor="middle">FROM ZERO TO INFINITY</text>
+</svg>
