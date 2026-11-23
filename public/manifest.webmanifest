@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "ADALIGO | The Ghost Who Created It All",
+  "short_name": "ADALIGO",
+  "description": "ADALIGO, the ghost who created it all: from zero to infinity.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#050608",
+  "theme_color": "#050608",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
