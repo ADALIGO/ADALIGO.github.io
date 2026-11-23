@@ -27,6 +27,7 @@ import LanguageShowcase from './components/LanguageShowcase';
 import GitHubFollowButton from './components/GitHubFollowButton';
 import TimelineVideo from './components/TimelineVideo';
 import TimelinePage from './TimelinePage';
+import ProtectedUsersPage from './protectedUSERS_root_path_secure/ProtectedUsersPage';
 import { PUBLIC_PLAYLIST } from './music/playlist';
 
 const ThreeBackground = lazy(() => import('./components/ThreeBackground'));
@@ -323,9 +324,10 @@ export default function App() {
   });
   const isAbout = pathname.endsWith('/about.html');
   const isTimeline = pathname.endsWith('/timeline.html');
+  const isProtectedUsers = pathname.startsWith('/protectedUSERS_root_path_secure');
 
   useEffect(() => {
-    const appPaths = new Set(['/', '/index.html', '/about.html', '/timeline.html']);
+    const appPaths = new Set(['/', '/index.html', '/about.html', '/timeline.html', PROTECTED_USERS_URL]);
     const handleNavigation = (event: MouseEvent) => {
       if (
         event.defaultPrevented ||
@@ -373,11 +375,13 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    document.title = isTimeline
-      ? 'ADALIGO | The Timeline'
-      : isAbout
-        ? 'About ADALIGO | From Zero to Infinity'
-        : 'ADALIGO | The Ghost Who Created It All';
+    document.title = isProtectedUsers
+      ? 'Protected Users | ADALIGO'
+      : isTimeline
+        ? 'ADALIGO | The Timeline'
+        : isAbout
+          ? 'About ADALIGO | From Zero to Infinity'
+          : 'ADALIGO | The Ghost Who Created It All';
     try {
       window.localStorage.setItem(ECO_STORAGE_KEYS.theme, theme);
       setEcoCookie(ECO_STORAGE_KEYS.cookieTheme, theme);
@@ -385,7 +389,7 @@ export default function App() {
     } catch {
       // The selected theme remains active for this page even if storage is disabled.
     }
-  }, [isAbout, isTimeline, theme]);
+  }, [isAbout, isProtectedUsers, isTimeline, theme]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -435,7 +439,7 @@ export default function App() {
         />
         <div className="main-container">
           <EcoLeftSidebar open={leftOpen} onClose={() => closeSidebar('left')} />
-          {isTimeline ? <TimelinePage /> : isAbout ? <AboutPage /> : <HomePage />}
+          {isProtectedUsers ? <ProtectedUsersPage /> : isTimeline ? <TimelinePage /> : isAbout ? <AboutPage /> : <HomePage />}
           <EcoRightSidebar
             open={rightOpen}
             onClose={() => closeSidebar('right')}
