@@ -66,13 +66,13 @@ Push notifications need a backend and are not enabled yet.
 <!-- language-metrics:start -->
 | Language | Equal starter share | Measured source share | Files | File types | Starter |
 |----------|---------------------|-----------------------|-------|------------|---------|
-| 🦀 Rust | 12.5% | 1.4% | 1 | `.rs` | [Open](./starters/rust/README.md) |
+| 🦀 Rust | 12.5% | 1.3% | 1 | `.rs` | [Open](./starters/rust/README.md) |
 | 🐹 Go | 12.5% | 1.2% | 2 | `.go` | [Open](./starters/go/README.md) |
 | 🐍 Python | 12.5% | 2.8% | 4 | `.py` | [Open](./starters/python/README.md) |
-| 🔷 TypeScript | 12.5% | 63.0% | 26 | `.ts, .tsx` | [Open](./starters/typescript/README.md) |
+| 🔷 TypeScript | 12.5% | 62.8% | 26 | `.ts, .tsx` | [Open](./starters/typescript/README.md) |
 | ⚡ JavaScript | 12.5% | 1.2% | 4 | `.js, .mjs, .cjs` | [Open](./starters/javascript/README.md) |
 | 🗃️ SQL | 12.5% | 1.0% | 5 | `.sql` | [Open](./starters/sql/README.md) |
-| 🎨 CSS | 12.5% | 28.5% | 4 | `.css` | [Open](./starters/css/README.md) |
+| 🎨 CSS | 12.5% | 28.8% | 4 | `.css` | [Open](./starters/css/README.md) |
 | 🌐 HTML | 12.5% | 0.9% | 2 | `.html, .htm` | [Open](./starters/html/README.md) |
 <!-- language-metrics:end -->
 
