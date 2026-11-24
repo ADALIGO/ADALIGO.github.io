@@ -152,39 +152,12 @@ function EcoRightSidebar({
 }
 
 function HomePage() {
-  const [isAvatarOpen, setIsAvatarOpen] = useState(false);
-
-  useEffect(() => {
-    if (!isAvatarOpen) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsAvatarOpen(false);
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isAvatarOpen]);
-
   return (
     <main id="main" className="page-main" tabIndex={-1}>
       <section className="hero-section">
         <div className="hero-content">
           <p className="eyebrow">THE GHOST WHO CREATED IT ALL · FROM ZERO TO INFINITY</p>
-          <div className="hero-heading-row">
-            <h1>I am <span>ADALIGO.</span><br /><span className="gradient-text">The nightmare no one believed.</span></h1>
-            <button
-              className="hero-avatar-button"
-              type="button"
-              onClick={() => setIsAvatarOpen(true)}
-              aria-label="Enlarge ADALIGO profile art placeholder"
-            >
-              <img
-                className="hero-avatar"
-                src="/assets/profile-placeholder.svg"
-                alt="ADALIGO profile art placeholder"
-              />
-            </button>
-          </div>
+          <h1>I am <span>ADALIGO.</span><br /><span className="gradient-text">The nightmare no one believed.</span></h1>
           <p className="hero-subtitle">A world built from silence, stubborn ideas, and the courage to keep creating before anyone else believes.</p>
           <div className="hero-actions">
             <a className="primary-button" href="/about.html">Enter the story <ArrowUpRight size={16} /></a>
@@ -194,28 +167,6 @@ function HomePage() {
           <p className="hero-caption">One ghost · one vision · zero to infinity</p>
         </div>
       </section>
-      {isAvatarOpen && (
-        <div
-          className="avatar-lightbox"
-          role="presentation"
-          onClick={(event) => {
-            if (event.target === event.currentTarget) setIsAvatarOpen(false);
-          }}
-        >
-          <div className="avatar-lightbox-dialog" role="dialog" aria-modal="true" aria-label="ADALIGO profile art placeholder">
-            <button
-              className="avatar-lightbox-close"
-              type="button"
-              onClick={() => setIsAvatarOpen(false)}
-              aria-label="Close enlarged profile art"
-              autoFocus
-            >
-              <X size={24} />
-            </button>
-            <img src="/assets/profile-placeholder.svg" alt="ADALIGO profile art placeholder" />
-          </div>
-        </div>
-      )}
 
       <section className="content-section intro-section" id="ecosystem">
         <div className="section-heading"><span className="eyebrow">FROM ZERO TO INFINITY</span><h2>Every world starts as an idea.</h2><p>This is a home for the visions that arrive before they make sense to anyone else — and the work of bringing them into the light.</p></div>
