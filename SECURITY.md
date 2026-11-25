@@ -1,36 +1,43 @@
 # Security policy
 
-## Scope
+## Scope and ownership
 
-This repository builds a static GitHub Pages site and a separately hosted API.
-The API handles GitHub OAuth sign-in, stores profile records and hashed session
-tokens through Prisma, and provides the aggregate profile-link click counter.
-It does not store GitHub access tokens. MongoDB is the default database
-provider; PostgreSQL is also supported.
+This public GitHub Pages site and its separately hosted API are maintained by
+[@ADALIGO](https://github.com/ADALIGO) as part of the ECO-SYS ecosystem. The
+API supports GitHub OAuth sign-in, profile records, session handling, and an
+aggregate profile-link click counter. The static website is publicly
+accessible; a hidden route or client-side check is not access control.
 
-The music player stores visitor-added files in the browser's IndexedDB and saved
-audio URLs and playback position in that browser's local storage. This data is not uploaded by this site, is not encrypted by the site, and is not
-synchronized between devices. A saved audio URL is not loaded until the visitor
-chooses to play it, at which point the browser contacts that audio host.
+## Account and access
 
-GitHub sign-in requests basic profile access. The API stores the GitHub account
-ID, username, available name/email, avatar URL, and profile URL. Session cookies
-are HTTP-only; only SHA-256 hashes of session tokens are stored in the database.
-Keep database credentials and the GitHub OAuth client secret in the API host's
-environment, never in the frontend or source control.
+The repository owner approves maintainers, OAuth application access, and
+deployment permissions. Any protected account or profile feature must be
+authorized by the API on every request and limited to owner-approved GitHub
+accounts. Enforce that restriction server-side; never rely on a frontend check
+or on a user's public GitHub profile.
 
-## Reporting a vulnerability
+Grant repository, OAuth, database, and hosting access using least privilege.
+Remove access that is no longer needed.
 
-Please do not publish details of an unpatched security issue in a public issue.
-Use GitHub's private vulnerability reporting for this repository if it is
-available. Otherwise, contact the maintainer through the GitHub profile:
-<https://github.com/ADALIGO>.
+## Authentication and data
 
-Include the affected URL or file, the impact, and steps to reproduce. Avoid
-including real credentials, private audio links, or other personal data.
+Request only the GitHub OAuth permissions needed by the application. Do not
+store GitHub access tokens in the database, browser storage, logs, or source
+control. Store OAuth client secrets and database credentials only in the API
+host's environment or an ignored local environment file. Do not expose private
+profile data through public API responses.
 
-## Safe use
+Production authentication traffic must use HTTPS. Configure session cookies
+with `HttpOnly` and `Secure`; choose `SameSite` to match the deployment's
+cross-site needs. Invalidate sessions on logout or revocation and avoid
+logging session tokens.
 
-- Do not put passwords, access tokens, or sensitive signed URLs in a playlist.
-- Clear this site's browser storage to remove locally saved music and settings.
-- Only add or publish audio that you own or are authorized to use.
+## Vulnerability reporting
+
+Do not publish details of an unpatched vulnerability in a public issue, pull
+request, or discussion. Use this repository's GitHub private vulnerability
+reporting when available. Otherwise, contact
+[@ADALIGO](https://github.com/ADALIGO) privately.
+
+Include the affected endpoint or file, impact, and a minimal reproduction.
+Remove credentials, private URLs, and personal data from reports.
