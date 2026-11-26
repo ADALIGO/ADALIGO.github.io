@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "eco-monorepo": "file:../..",
+    "mongodb": "^6.21.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

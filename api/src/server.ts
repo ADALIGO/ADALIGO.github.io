@@ -18,6 +18,7 @@ import {
   logoutProtectedUser,
   startGitHubLogin,
 } from './protectedUSERS_root_path_secure/githubAuth.js';
+import { closeMusicSyncRelay, handleMusicSyncRequest } from './musicSyncRelay.js';
 
 const port = Number(process.env.PORT ?? 8787);
 if (!Number.isInteger(port) || port < 1 || port > 65535) {
@@ -51,14 +52,16 @@ async function handleRequest(request: IncomingMessage, response: ServerResponse)
     response.setHeader('Vary', 'Origin');
     response.setHeader('Access-Control-Allow-Credentials', 'true');
   }
-  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  response.setHeader('Access-Control-Allow-Headers', 'Accept, Content-Type');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE, OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Accept, Content-Type, Range');
 
   if (request.method === 'OPTIONS') {
     response.writeHead(204);
     response.end();
     return;
   }
+
+  if (await handleMusicSyncRequest(request, response)) return;
 
   const pathname = new URL(request.url ?? '/', 'http://localhost').pathname;
   if (pathname === '/auth/github') {
@@ -154,6 +157,10 @@ for (const signal of ['SIGINT', 'SIGTERM'] as const) {
       }
       void disconnectDatabase().catch((disconnectError: unknown) => {
         console.error('Unable to close the database connection cleanly.', disconnectError);
+        process.exitCode = 1;
+      });
+      void closeMusicSyncRelay().catch((relayError: unknown) => {
+        console.error('Unable to close the music sync service cleanly.', relayError);
         process.exitCode = 1;
       });
     });
