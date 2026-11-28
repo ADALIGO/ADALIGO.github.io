@@ -163,6 +163,7 @@ function HomePage() {
             <a className="primary-button" href="/about.html">Enter the story <ArrowUpRight size={16} /></a>
             <GitHubFollowButton />
             <a className="secondary-button" href="/timeline.html">Explore the timeline <Clock3 size={16} /></a>
+            <a className="secondary-button" href="#listen"><AudioLines size={16} /> Listen with me</a>
           </div>
           <p className="hero-caption">One ghost · one vision · zero to infinity</p>
         </div>
