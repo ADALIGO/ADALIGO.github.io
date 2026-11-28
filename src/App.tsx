@@ -169,7 +169,11 @@ function HomePage() {
           <p className="hero-caption">One ghost · one vision · zero to infinity</p>
         </div>
       </section>
-      <ContributionWeekEmbed site="adaligo" />
+      <ContributionWeekEmbed
+        site="adaligo"
+        repository="ADALIGO/ADALIGO.github.io"
+        branch="V-16.7.1"
+      />
 
       <section className="content-section intro-section" id="ecosystem">
         <div className="section-heading"><span className="eyebrow">FROM ZERO TO INFINITY</span><h2>Every world starts as an idea.</h2><p>This is a home for the visions that arrive before they make sense to anyone else — and the work of bringing them into the light.</p></div>
